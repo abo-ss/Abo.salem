@@ -3,47 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> ab0salem_store– منتجات العناية والتجميل الرجا</title>
-
-  <!-- إثبات ملكية جوجل -->
-  <meta name="google-site-verification" content="ihkmfshbFKNqRVZGP62wqGC_T-9rTKnan_esuXqSQpo" />
-
-  <!-- وصف الموقع SEO -->
-  <meta name="description" content="متجر صالون أبوسالم VIP يقدم أفضل منتجات العناية بالشعر والرجال. اطلب الآن عبر واتساب واحصل على أفضل جودة.">
-
+  <title>متجر صالون أبوسالم VIP</title>
   <style>
     body { font-family: Tahoma, sans-serif; margin:0; background:#f5f5f5; }
     header { background:#131921; color:white; padding:10px 20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; }
     header h1 { color:#FFD700; font-size:24px; font-weight:bold; margin:0; }
     header input { width:40%; padding:6px; border:none; border-radius:4px; margin-top:5px; }
-    header .cart { font-size:20px; cursor:pointer; }
-
     nav { background:#232f3e; padding:10px; text-align:center; }
     nav a { color:white; margin:0 10px; text-decoration:none; font-size:15px; }
     nav a:hover { text-decoration:underline; }
-
     .welcome-section { text-align:center; margin:20px; }
     .welcome-section h1 { font-size:22px; color:#131921; margin-bottom:10px; }
     .welcome-section p { font-size:16px; color:#333; }
-
     .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:20px; padding:20px; }
     .product { background:white; padding:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center; }
     .product img { max-width:100%; height:200px; object-fit:cover; border-radius:8px; }
     .product h2 { font-size:16px; margin:10px 0; color:#333; }
     .product p { font-size:13px; color:#555; min-height:40px; }
     .price { color:#b12704; font-weight:bold; margin:10px 0; font-size:15px; }
-    .btn { background:#FFD700; color:black; padding:8px 15px; border-radius:5px; text-decoration:none; font-size:14px; font-weight:bold; display:inline-block; }
+    .btn { background:#FFD700; color:black; padding:8px 15px; border-radius:5px; text-decoration:none; font-size:14px; font-weight:bold; display:inline-block; cursor:pointer; }
     .btn:hover { background:#e6c200; }
-
     footer { background:#232f3e; color:white; text-align:center; padding:10px; font-size:14px; margin-top:20px; }
-
+    
+    /* Popup */
     .overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
-    .login-box { background:white; padding:30px; border-radius:10px; width:300px; text-align:center; }
-    .login-box h2 { margin-bottom:20px; color:#131921; }
-    .login-box input { width:90%; margin:10px 0; padding:10px; border:1px solid #ccc; border-radius:5px; }
-    .login-box button { background:#FFD700; border:none; padding:10px 20px; border-radius:5px; font-weight:bold; cursor:pointer; }
-    .login-box button:hover { background:#e6c200; }
-    .close { position:absolute; top:20px; right:20px; font-size:24px; color:white; cursor:pointer; }
+    .popup-box { background:white; padding:30px; border-radius:10px; width:300px; text-align:center; position:relative; }
+    .popup-box h2 { margin-bottom:20px; color:#131921; }
+    .popup-box input { width:90%; margin:10px 0; padding:10px; border:1px solid #ccc; border-radius:5px; }
+    .popup-box button { background:#FFD700; border:none; padding:10px 20px; border-radius:5px; font-weight:bold; cursor:pointer; }
+    .popup-box button:hover { background:#e6c200; }
+    .close { position:absolute; top:10px; right:15px; font-size:24px; color:black; cursor:pointer; }
   </style>
 </head>
 <body>
@@ -51,10 +40,6 @@
 <header>
   <h1>متجر صالون أبوسالم VIP</h1>
   <input type="text" placeholder="ابحث عن المنتجات...">
-  <div>
-    <a href="#" id="loginBtn" style="color:white; margin-right:15px;">تسجيل الدخول</a>
-    <span class="cart">🛒</span>
-  </div>
 </header>
 
 <nav>
@@ -68,108 +53,99 @@
   <p>أفضل منتجات العناية بالشعر والرجال – اطلب الآن عبر واتساب واحصل على أفضل جودة.</p>
 </div>
 
-
-
-  
 <section class="products">
-  <div class="product">
+  <!-- مثال منتج -->
+  <div class="product" data-product="كريم تثبيت الشعر VERB">
     <img src="https://i.postimg.cc/T12rjZKn/Screenshot-2025-08-25-03-47-17-753.jpg" alt="كريم تثبيت الشعر VERB">
     <h2>كريم تثبيت الشعر VERB</h2>
     <p>لمعان وقوة مع زيوت طبيعية 100% – تثبيت يدوم طوال اليوم</p>
     <div class="price">70 جنيه</div>
-    <a href="https://wa.me/201145858299?text=مرحباً%20" target="_blank" class="btn">اطلب الآن</a>
+    <span class="btn order-btn">اطلب الآن</span>
   </div>
 
-
-  <div class="product">
+  <div class="product" data-product="كريم سينيور واكس">
     <img src="https://i.postimg.cc/N097PMr2/61-LN1h-Fom4-L-UF894-1000-QL80.jpg" alt="كريم سينيور واكس">
     <h2>كريم سينيور واكس</h2>
     <p>ثبات قوي ولمعان مثالي لتسريحاتك اليومية</p>
     <div class="price">50 جنيه</div>
-    <a href="https://wa.me/201145858299?text=مرحباً%20" target="_blank" class="btn">اطلب الآن</a>
+    <span class="btn order-btn">اطلب الآن</span>
   </div>
-  
 
-  
-<!-- كريم جل Royal -->
-<div class="product">
-  <img src="https://i.postimg.cc/vHZH52jD/Photoroom.png" alt="جل Royal">
-  <h2>جل Royal</h2>
-  <p>ثبات مثالي ولمعان طبيعي لتسريحاتك اليومية.</p>
-  <div class="price">35 جنيه</div>
-  <a href="https://wa.me/201145858299?text=مرحباً%20" target="_blank" class="btn">اطلب الآن</a>
-</div>
-  
-<!-- كريم Dodge للشعر الكيرلي -->
-<div class="product">
-  <img src="https://i.postimg.cc/fRTCndLJ/1717262244-639.jpg" alt="كريم Dodge للشعر الكيرلي">
-  <h2>كريم Dodge</h2>
-  <p>مثالي للشعر الكيرلي: يرطب ويحدد التجعيدات ويعطي لمعان طبيعي بدون تثبيت صلب.</p>
-  <div class="price">135 جنيه</div>
-  <a href="https://wa.me/201145858299?text=مرحباً%20" target="_blank" class="btn">اطلب الآن</a>
-</div>
-
-<!-- كريم Leven للشعر الكيرلي -->
-<div class="product">
-  <img src="https://i.postimg.cc/J0MJ3wHG/065d9520-86e4-4319-bb15-a3651767baad.jpg" alt="كريم Leven للشعر الكيرلي">
-  <h2>كريم Leven</h2>
-  <p>مثالي للشعر الكيرلي: يعزز التجعيدات ويرطب الشعر ويمنحه مظهر صحي ومرن طوال اليوم.</p>
-  <div class="price">100 جنيه</div>
-  <a href="https://wa.me/201145858299?text=مرحباً%20" target="_blank" class="btn">اطلب الآن</a>
-</div>
-
-    <!-- جيل You -->
-<div class="product">
-  <img src="https://i.postimg.cc/XqdFdjvM/Screenshot-2025-08-28-08-39-39-343.jpg" alt="جيل You">
-  <h2>جيل You</h2>
-  <p>ثبات ممتاز ولمعان طبيعي لتسريحاتك اليومية.</p>
-  <div class="price">30 جنيه</div>
-  <a href="https://wa.me/201145858299?text=مرحباً%20" target="_blank" class="btn">اطلب الآن</a>
-</div>
-  
-<!-- جواني سفنجه للشعر الكيرلي -->
-<div class="product">
-  <img src="https://i.postimg.cc/Xv0N6SMs/Screenshot-2025-07-21-21-08-53-557.jpg" alt="جواني سفنجه للشعر الكيرلي">
-  <h2>جوانتي سفنجه للشعر الكيرلي</h2>
-  <p>مثالية للشعر الكيرلي: تمنح الترطيب والتحكم الكامل في التجعيدات مع مظهر صحي ومرن.</p>
-  <div class="price">100 جنيه</div>
-  <a href="https://wa.me/201145858299?text=مرحباً%20" target="_blank" class="btn">اطلب الآن</a>
-</div>
-  
-  <div class="product">
-    <img src="https://i.imgur.com/xyz456.jpg" alt="منتج قادم">
-    <h2>منتج قادم</h2>
-    <p>وصف قصير للمنتج القادم – سيتم إضافته قريبًا</p>
-    <div class="price">-- جنيه</div>
-    <a href="#" class="btn">قريبًا</a>
+  <div class="product" data-product="جل Royal">
+    <img src="https://i.postimg.cc/JtSLLxRW/Photoroom.png" alt="جل Royal">
+    <h2>جل Royal</h2>
+    <p>ثبات مثالي ولمعان طبيعي لتسريحاتك اليومية.</p>
+    <div class="price">35 جنيه</div>
+    <span class="btn order-btn">اطلب الآن</span>
   </div>
-  
+
+  <div class="product" data-product="كريم Dodge">
+    <img src="https://i.postimg.cc/GHVGvHvC/1717262244-639.jpg" alt="كريم Dodge">
+    <h2>كريم Dodge</h2>
+    <p>مثالي للشعر الكيرلي: يرطب ويحدد التجعيدات ويعطي لمعان طبيعي بدون تثبيت صلب.</p>
+    <div class="price">135 جنيه</div>
+    <span class="btn order-btn">اطلب الآن</span>
+  </div>
+
+  <div class="product" data-product="كريم Leven">
+    <img src="https://i.postimg.cc/xJpcY4R2/065d9520-86e4-4319-bb15-a3651767baad.jpg" alt="كريم Leven">
+    <h2>كريم Leven</h2>
+    <p>مثالي للشعر الكيرلي: يعزز التجعيدات ويرطب الشعر ويمنحه مظهر صحي ومرن طوال اليوم.</p>
+    <div class="price">100 جنيه</div>
+    <span class="btn order-btn">اطلب الآن</span>
+  </div>
+
+  <div class="product" data-product="جيل You">
+    <img src="https://i.postimg.cc/K3cRyyLQ/Screenshot-2025-08-28-08-39-39-343.jpg" alt="جيل You">
+    <h2>جيل You</h2>
+    <p>ثبات ممتاز ولمعان طبيعي لتسريحاتك اليومية.</p>
+    <div class="price">30 جنيه</div>
+    <span class="btn order-btn">اطلب الآن</span>
+  </div>
+
+  <div class="product" data-product="جوانتي سفنجه">
+    <img src="https://i.postimg.cc/PC2n175D/Screenshot-2025-07-21-21-08-53-557.jpg" alt="جوانتي سفنجه">
+    <h2>جوانتي سفنجه للشعر الكيرلي</h2>
+    <p>مثالية للشعر الكيرلي: تمنح الترطيب والتحكم الكامل في التجعيدات مع مظهر صحي ومرن.</p>
+    <div class="price">100 جنيه</div>
+    <span class="btn order-btn">اطلب الآن</span>
+  </div>
+
 </section>
 
 <footer>
   📞 الهاتف / واتساب: 01145858299<br>
-https://www.instagram.com/ab0_salem_store?igsh=cm4zdWx4cTkyNDQ3  تابعنا على فيسبوك و إنستجرام<br>
+  <a href="https://www.instagram.com/ab0_salem_store?igsh=cm4zdWx4cTkyNDQ3" style="color:white;">تابعنا على انستجرام</a> و
+  <a href="https://www.facebook.com/" style="color:white;">فيسبوك</a><br>
   © 2025 متجر صالون أبوسالم VIP
 </footer>
 
+<!-- نافذة الطلب -->
 <div class="overlay" id="overlay">
-  <div class="login-box">
-    <h2>تسجيل الدخول</h2>
-    <input type="text" placeholder="اسم المستخدم">
-    <input type="password" placeholder="كلمة المرور">
-    <button>دخول</button>
+  <div class="popup-box">
+    <span class="close" id="closeBtn">&times;</span>
+    <h2>أدخل بياناتك</h2>
+    <form id="orderForm" method="POST" action="https://usebasin.com/f/032c48d0b745">
+      <input type="text" name="name" placeholder="الاسم" required>
+      <input type="tel" name="phone" placeholder="رقم التليفون" required>
+      <input type="hidden" name="product" id="productInput">
+      <button type="submit">إرسال</button>
+    </form>
   </div>
-  <div class="close" id="closeBtn">&times;</div>
 </div>
 
 <script>
   const overlay = document.getElementById('overlay');
-  const loginBtn = document.getElementById('loginBtn');
   const closeBtn = document.getElementById('closeBtn');
+  const orderBtns = document.querySelectorAll('.order-btn');
+  const productInput = document.getElementById('productInput');
 
-  loginBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    overlay.style.display = 'flex';
+  orderBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const productName = btn.closest('.product').dataset.product;
+      productInput.value = productName;
+      overlay.style.display = 'flex';
+    });
   });
 
   closeBtn.addEventListener('click', () => {
@@ -177,7 +153,7 @@ https://www.instagram.com/ab0_salem_store?igsh=cm4zdWx4cTkyNDQ3  تابعنا ع
   });
 
   window.addEventListener('click', (e) => {
-    if (e.target === overlay) {
+    if(e.target === overlay){
       overlay.style.display = 'none';
     }
   });
