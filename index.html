@@ -3,168 +3,172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر صالون أبوسالم VIP</title>
+<title>متجر ab0,salem</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-body { font-family: Tahoma, sans-serif; margin:0; background:#f5f5f5; }
-header { background:#131921; color:white; padding:10px 20px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; }
-header h1 { color:#FFD700; font-size:24px; font-weight:bold; margin:0; }
-header input { width:40%; padding:6px; border:none; border-radius:4px; margin-top:5px; }
-nav { background:#232f3e; padding:10px; text-align:center; }
-nav a { color:white; margin:0 10px; text-decoration:none; font-size:15px; }
-nav a:hover { text-decoration:underline; }
-.welcome-section { text-align:center; margin:20px; }
-.welcome-section h1 { font-size:22px; color:#131921; margin-bottom:10px; }
-.welcome-section p { font-size:16px; color:#333; }
-.products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:20px; padding:20px; }
-.product { background:white; padding:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); text-align:center; }
-.product img { max-width:100%; height:200px; object-fit:cover; border-radius:8px; }
-.product h2 { font-size:16px; margin:10px 0; color:#333; }
-.product p { font-size:13px; color:#555; min-height:40px; }
-.price { color:#b12704; font-weight:bold; margin:10px 0; font-size:15px; }
-.btn { background:#FFD700; color:black; padding:8px 15px; border-radius:5px; text-decoration:none; font-size:14px; font-weight:bold; display:inline-block; cursor:pointer; }
-.btn:hover { background:#e6c200; }
-footer { background:#232f3e; color:white; text-align:center; padding:10px; font-size:14px; margin-top:20px; }
-/* Popup */
-.overlay { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; }
-.popup-box { background:white; padding:30px; border-radius:10px; width:300px; text-align:center; position:relative; }
-.popup-box h2 { margin-bottom:20px; color:#131921; }
-.popup-box input { width:90%; margin:10px 0; padding:10px; border:1px solid #ccc; border-radius:5px; }
-.popup-box button { background:#FFD700; border:none; padding:10px 20px; border-radius:5px; font-weight:bold; cursor:pointer; }
-.popup-box button:hover { background:#e6c200; }
-.close { position:absolute; top:10px; right:15px; font-size:24px; color:black; cursor:pointer; }
+body { font-family: Arial, sans-serif; margin:0; background:#f5f5f5; scroll-behavior:smooth; }
+header { position:sticky; top:0; background:#ff4081; color:white; display:flex; align-items:center; justify-content:space-between; padding:10px 20px; box-shadow:0 2px 6px rgba(0,0,0,0.2); z-index:1000; }
+header h1 { margin:0; font-size:22px; }
+header nav a { color:white; margin-left:15px; text-decoration:none; font-weight:bold; display:flex; align-items:center; }
+header nav a i { margin-left:5px; }
+header nav a:hover { text-decoration:underline; }
+
+#home { padding:30px; text-align:center; font-size:20px; color:#ff4081; }
+
+.products { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:15px; padding:20px; }
+.product-card { background:white; border-radius:8px; padding:10px; text-align:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:transform 0.2s; display:flex; flex-direction:column; }
+.product-card:hover { transform:scale(1.03); }
+.product-card img { width:100%; height:150px; object-fit:cover; border-radius:5px; margin-bottom:5px; }
+.product-card h2 { font-size:14px; margin:5px 0; color:#ff4081; flex:0; }
+.product-card p { font-size:12px; min-height:30px; margin:5px 0; flex:1; }
+.product-card .price { font-weight:bold; margin-bottom:5px; color:#b12704; }
+.product-card button { background:#ff4081; color:white; border:none; padding:8px; border-radius:5px; cursor:pointer; font-weight:bold; margin-top:5px; }
+.product-card button:hover { background:#e60070; }
+
+.cart-icon { position:fixed; bottom:20px; right:20px; background:#ff4081; color:white; padding:15px; border-radius:50%; font-size:20px; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.3); z-index:1000; display:flex; align-items:center; justify-content:center; }
+.cart-count { position:absolute; top:-5px; right:-5px; background:white; color:#ff4081; border-radius:50%; padding:2px 6px; font-size:12px; font-weight:bold; }
+
+.cart-items { position:fixed; bottom:70px; right:20px; width:320px; max-height:400px; overflow-y:auto; background:white; border-radius:8px; box-shadow:0 2px 10px rgba(0,0,0,0.2); padding:10px; display:none; z-index:999; }
+.cart-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; font-size:14px; }
+.cart-item span { flex:1; }
+.cart-item input { width:40px; text-align:center; border-radius:5px; border:1px solid #ccc; padding:2px; margin:0 5px; }
+.cart-item button { background:#ff4081; border:none; color:white; border-radius:5px; cursor:pointer; padding:3px 6px; font-size:12px; }
+
+.cart-total { font-weight:bold; margin-top:10px; text-align:right; }
+
+form { margin:20px; padding:15px; background:white; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+form label { display:block; margin-bottom:5px; font-weight:bold; }
+form input { width:100%; margin-bottom:10px; padding:8px; border-radius:5px; border:1px solid #ccc; }
+form button { width:100%; padding:10px; background:#ff4081; color:white; border:none; border-radius:5px; cursor:pointer; font-weight:bold; }
+form button:hover { background:#e60070; }
+
+#notification { position:fixed; top:20px; right:50%; transform:translateX(50%); background:#ff4081; color:white; padding:10px 20px; border-radius:5px; display:none; font-weight:bold; z-index:2000; box-shadow:0 2px 6px rgba(0,0,0,0.3); }
+
+footer { background:#ff80ab; color:white; text-align:center; padding:15px; margin-top:20px; font-size:14px; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>متجر صالون أبوسالم VIP</h1>
-  <input type="text" placeholder="ابحث عن المنتجات...">
+<h1>ab0,salem 🛒</h1>
+<nav>
+<a href="#home"><i class="fas fa-home"></i> الرئيسية</a>
+<a href="#products"><i class="fas fa-box-open"></i> المنتجات</a>
+<a href="#customerForm"><i class="fas fa-shopping-cart"></i> اطلب الآن</a>
+</nav>
 </header>
 
-<nav>
-  <a href="#">الرئيسية</a>
-  <a href="#">المنتجات</a>
-  <a href="#">تواصل معنا</a>
-</nav>
-
-<div class="welcome-section">
-  <h1>مرحباً بكم في متجر صالون أبوسالم VIP</h1>
-  <p>أفضل منتجات العناية بالشعر والرجال – اطلب الآن عبر EmailJS واحصل على أفضل جودة.</p>
-</div>
-
-<section class="products">
-  <div class="product" data-product="كريم تثبيت الشعر VERB">
-    <img src="https://i.postimg.cc/T12rjZKn/Screenshot-2025-08-25-03-47-17-753.jpg" alt="كريم تثبيت الشعر VERB">
-    <h2>كريم تثبيت الشعر VERB</h2>
-    <p>لمعان وقوة مع زيوت طبيعية 100% – تثبيت يدوم طوال اليوم</p>
-    <div class="price">70 جنيه</div>
-    <span class="btn order-btn">اطلب الآن</span>
-  </div>
-
-  <div class="product" data-product="كريم سينيور واكس">
-    <img src="https://i.postimg.cc/N097PMr2/61-LN1h-Fom4-L-UF894-1000-QL80.jpg" alt="كريم سينيور واكس">
-    <h2>كريم سينيور واكس</h2>
-    <p>ثبات قوي ولمعان مثالي لتسريحاتك اليومية</p>
-    <div class="price">50 جنيه</div>
-    <span class="btn order-btn">اطلب الآن</span>
-  </div>
-
-  <div class="product" data-product="جل Royal">
-    <img src="https://i.postimg.cc/JtSLLxRW/Photoroom.png" alt="جل Royal">
-    <h2>جل Royal</h2>
-    <p>ثبات مثالي ولمعان طبيعي لتسريحاتك اليومية.</p>
-    <div class="price">35 جنيه</div>
-    <span class="btn order-btn">اطلب الآن</span>
-  </div>
-
-  <div class="product" data-product="كريم Dodge">
-    <img src="https://i.postimg.cc/GHVGvHvC/1717262244-639.jpg" alt="كريم Dodge">
-    <h2>كريم Dodge</h2>
-    <p>مثالي للشعر الكيرلي: يرطب ويحدد التجعيدات ويعطي لمعان طبيعي بدون تثبيت صلب.</p>
-    <div class="price">135 جنيه</div>
-    <span class="btn order-btn">اطلب الآن</span>
-  </div>
-
-  <div class="product" data-product="كريم Leven">
-    <img src="https://i.postimg.cc/xJpcY4R2/065d9520-86e4-4319-bb15-a3651767baad.jpg" alt="كريم Leven">
-    <h2>كريم Leven</h2>
-    <p>مثالي للشعر الكيرلي: يعزز التجعيدات ويرطب الشعر ويمنحه مظهر صحي ومرن طوال اليوم.</p>
-    <div class="price">100 جنيه</div>
-    <span class="btn order-btn">اطلب الآن</span>
-  </div>
-
-  <div class="product" data-product="جيل You">
-    <img src="https://i.postimg.cc/K3cRyyLQ/Screenshot-2025-08-28-08-39-39-343.jpg" alt="جيل You">
-    <h2>جيل You</h2>
-    <p>ثبات ممتاز ولمعان طبيعي لتسريحاتك اليومية.</p>
-    <div class="price">30 جنيه</div>
-    <span class="btn order-btn">اطلب الآن</span>
-  </div>
-
-  <div class="product" data-product="جوانتي سفنجه">
-    <img src="https://i.postimg.cc/PC2n175D/Screenshot-2025-07-21-21-08-53-557.jpg" alt="جوانتي سفنجه">
-    <h2>جوانتي سفنجه للشعر الكيرلي</h2>
-    <p>مثالية للشعر الكيرلي: تمنح الترطيب والتحكم الكامل في التجعيدات مع مظهر صحي ومرن.</p>
-    <div class="price">100 جنيه</div>
-    <span class="btn order-btn">اطلب الآن</span>
-  </div>
+<section id="home">
+مرحباً بكم في متجر ab0,salem!
 </section>
 
-<footer>
-  📞 الهاتف / واتساب: 01145858299<br>
-  <a href="https://www.instagram.com/ab0_salem_store?igsh=cm4zdWx4cTkyNDQ3" style="color:white;">تابعنا على انستجرام</a> و
-  <a href="https://www.facebook.com/" style="color:white;">فيسبوك</a><br>
-  © 2025 متجر صالون أبوسالم VIP
-</footer>
-
-<div class="overlay" id="overlay">
-  <div class="popup-box">
-    <span class="close" id="closeBtn">&times;</span>
-    <h2>أدخل بياناتك</h2>
-    <form id="orderForm">
-      <input type="text" name="name" placeholder="الاسم" required>
-      <input type="tel" name="phone" placeholder="رقم التليفون" required>
-      <input type="hidden" name="product" id="productInput">
-      <button type="submit">إرسال</button>
-    </form>
-  </div>
+<div class="products" id="products">
+<div class="product-card" data-name="كريم تثبيت الشعر VERB" data-price="80">
+<img src="https://i.postimg.cc/T12rjZKn/Screenshot-2025-08-25-03-47-17-753.jpg" alt="كريم VERB">
+<h2>كريم تثبيت الشعر VERB</h2>
+<p>لمعان وقوة مع زيوت طبيعية</p>
+<div class="price">80 جنيه</div>
+<button onclick="addToCart(this)">أضف للسلة</button>
+</div>
 </div>
 
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<div class="cart-icon" onclick="toggleCart()">🛒
+<span class="cart-count" id="cart-count">0</span>
+</div>
+<div class="cart-items" id="cart-items"></div>
+
+<div id="notification"></div>
+
+<form id="customerForm">
+<label>الاسم الكامل</label>
+<input type="text" id="customerName" placeholder="ادخل اسمك" required>
+<label>رقم الهاتف</label>
+<input type="text" id="customerPhone" placeholder="ادخل رقم هاتفك" required>
+<label>العنوان</label>
+<input type="text" id="customerAddress" placeholder="ادخل عنوانك" required>
+<button type="submit">اطلب الآن</button>
+</form>
+
+<footer>
+📞 الهاتف / واتساب: 01145858299<br>
+© 2026 متجر ab0,salem
+</footer>
+
 <script>
-const overlay = document.getElementById('overlay');
-const closeBtn = document.getElementById('closeBtn');
-const orderBtns = document.querySelectorAll('.order-btn');
-const productInput = document.getElementById('productInput');
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-orderBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const productName = btn.closest('.product').dataset.product;
-    productInput.value = productName;
-    overlay.style.display = 'flex';
+function saveCart(){ localStorage.setItem('cart', JSON.stringify(cart)); }
+
+function addToCart(btn){
+  const card=btn.parentElement;
+  const name=card.dataset.name;
+  const price=parseFloat(card.dataset.price)||0;
+
+  const existing=cart.find(i=>i.name===name);
+  if(existing){ existing.qty++; }
+  else{ cart.push({name, price, qty:1}); }
+  saveCart();
+  updateCartUI();
+
+  const notif=document.getElementById('notification');
+  notif.textContent=`تمت إضافة ${name} للسلة!`;
+  notif.style.display='block';
+  setTimeout(()=>notif.style.display='none',2000);
+}
+
+function removeItem(index){ cart.splice(index,1); saveCart(); updateCartUI(); }
+
+function changeQty(index,value){
+  cart[index].qty=parseInt(value);
+  if(cart[index].qty<=0) removeItem(index);
+  else { saveCart(); updateCartUI(); }
+}
+
+function toggleCart(){
+  const c=document.getElementById('cart-items');
+  c.style.display=c.style.display==='block'?'none':'block';
+}
+
+function updateCartUI(){
+  const cartItems=document.getElementById('cart-items');
+  const cartCount=document.getElementById('cart-count');
+  cartItems.innerHTML='';
+  let total=0;
+  cart.forEach((item,index)=>{
+    total+=item.price*item.qty;
+    const div=document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML=`<span>${item.name} - ${item.price} جنيه</span>
+      <input type="number" min="1" value="${item.qty}" onchange="changeQty(${index},this.value)">
+      <button onclick="removeItem(${index})">حذف</button>`;
+    cartItems.appendChild(div);
   });
-});
+  const totalDiv=document.createElement('div');
+  totalDiv.className='cart-total';
+  totalDiv.textContent=`المجموع: ${total} جنيه`;
+  cartItems.appendChild(totalDiv);
 
-closeBtn.addEventListener('click', () => overlay.style.display = 'none');
-window.addEventListener('click', (e) => { if(e.target === overlay) overlay.style.display = 'none'; });
+  cartCount.textContent=cart.reduce((sum,i)=>sum+i.qty,0);
+}
 
-document.getElementById('orderForm').addEventListener('submit', function(e){
+updateCartUI();
+
+document.getElementById('customerForm').addEventListener('submit', function(e){
   e.preventDefault();
-  const templateParams = {
-    product: productInput.value,
-    name: this.name.value,
-    phone: this.phone.value
-  };
-  emailjs.send("service_qbf7bde", "template_3uebv55", templateParams)
-    .then(function(response){
-      alert("تم إرسال طلبك بنجاح! سيتم التواصل معك قريبًا.");
-      overlay.style.display = 'none';
-      document.getElementById('orderForm').reset();
-    }, function(error){
-      alert("حدث خطأ أثناء الإرسال، حاول مرة أخرى.");
-    });
+  if(cart.length===0){ alert("سلة الشراء فارغة!"); return; }
+
+  const name=document.getElementById('customerName').value;
+  const phone=document.getElementById('customerPhone').value;
+  const address=document.getElementById('customerAddress').value;
+  const products=cart.map(i=>`${i.name} x${i.qty}`).join(', ');
+
+  const formURL="https://docs.google.com/forms/d/e/1FAIpQLScN2OeFj2uHYDVUFsIqW2kimQQA2kOnoyyKZOcmOltTSR1QmQ/viewform";
+  
+  // تحويل البيانات إلى GET params عشان يفتح الفورم
+  let params = `?usp=pp_url&entry.1815828851=${encodeURIComponent(products)}&entry.1697409289=${encodeURIComponent(name)}&entry.1082939855=${encodeURIComponent(address)}&entry.1177612717=${encodeURIComponent(phone)}`;
+  
+  window.open(formURL+params, "_blank");
 });
 </script>
-
 </body>
 </html>
