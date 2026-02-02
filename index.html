@@ -92,6 +92,28 @@ footer { background:#ff80ab; color:white; text-align:center; padding:15px; margi
 
 
 
+ /* ضبط كل الصور في الموقع */
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* كروت المنتجات */
+.product-card img {
+  max-height: 260px;
+  object-fit: contain;
+}
+
+/* لو في div ماسك الصورة */
+.product-card {
+  overflow: visible;
+}
+
+
+
+
 
 
 <div class="cart-icon" onclick="toggleCart()">🛒
@@ -191,28 +213,6 @@ document.getElementById('customerForm').addEventListener('submit', function(e){
   
   window.open(formURL+params, "_blank");
 });
-
-
- /* ضبط كل الصور في الموقع */
-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: contain;
-}
-
-/* كروت المنتجات */
-.product-card img {
-  max-height: 260px;
-  object-fit: contain;
-}
-
-/* لو في div ماسك الصورة */
-.product-card {
-  overflow: visible;
-}
-
-
 
 
   
