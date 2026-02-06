@@ -4,15 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google AdSense Account -->
+  <meta name="google-adsense-account" content="ca-pub-3785665622582541">
+
   <!-- Google Site Verification -->
-  <meta name="google-site-verification" content="ihkmfshbFKNqRVZGP62wqGC_T-9rTKnan_esuXqSQpo" />
+  <meta name="google-site-verification"
+        content="ihkmfshbFKNqRVZGP62wqGC_T-9rTKnan_esuXqSQpo">
 
   <title>متجر ab0,salem</title>
 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-  <!-- Google AdSense -->
+  <!-- Google AdSense Script -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3785665622582541"
     crossorigin="anonymous"></script>
@@ -65,35 +70,24 @@
       padding:10px;
       text-align:center;
       box-shadow:0 2px 6px rgba(0,0,0,0.1);
-      display:flex;
-      flex-direction:column;
     }
 
     .product-card img{
       width:100%;
-      height:auto;
       border-radius:5px;
-      margin-bottom:5px;
     }
 
     .product-card h2{
       font-size:14px;
-      margin:5px 0;
       color:#ff4081;
-    }
-
-    .product-card p{
-      font-size:12px;
-      margin:5px 0;
     }
 
     .price{
       font-weight:bold;
       color:#b12704;
-      margin-bottom:5px;
     }
 
-    .product-card button{
+    button{
       background:#ff4081;
       color:white;
       border:none;
@@ -115,79 +109,6 @@
       cursor:pointer;
     }
 
-    .cart-count{
-      position:absolute;
-      top:-5px;
-      right:-5px;
-      background:white;
-      color:#ff4081;
-      border-radius:50%;
-      padding:2px 6px;
-      font-size:12px;
-    }
-
-    .cart-items{
-      position:fixed;
-      bottom:70px;
-      right:20px;
-      width:320px;
-      max-height:400px;
-      overflow-y:auto;
-      background:white;
-      border-radius:8px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.2);
-      padding:10px;
-      display:none;
-    }
-
-    .cart-item{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      margin-bottom:10px;
-      font-size:14px;
-    }
-
-    .cart-item input{
-      width:40px;
-    }
-
-    .cart-item button{
-      background:#ff4081;
-      border:none;
-      color:white;
-      padding:3px 6px;
-      border-radius:5px;
-      cursor:pointer;
-    }
-
-    .cart-total{
-      font-weight:bold;
-      text-align:right;
-      margin-top:10px;
-    }
-
-    form{
-      margin:20px;
-      background:white;
-      padding:15px;
-      border-radius:8px;
-    }
-
-    form input, form button{
-      width:100%;
-      padding:8px;
-      margin-bottom:10px;
-    }
-
-    form button{
-      background:#ff4081;
-      color:white;
-      border:none;
-      border-radius:5px;
-      font-weight:bold;
-    }
-
     footer{
       background:#ff80ab;
       color:white;
@@ -204,7 +125,7 @@
   <nav>
     <a href="#home">الرئيسية</a>
     <a href="#products">المنتجات</a>
-    <a href="#customerForm">اطلب الآن</a>
+    <a href="#order">اطلب الآن</a>
   </nav>
 </header>
 
@@ -214,114 +135,28 @@
 
 <div class="products" id="products">
 
-  <div class="product-card" data-name="لوشن Carbamide 10% Urea" data-price="130">
+  <div class="product-card">
     <img src="https://i.postimg.cc/YSQBvZSJ/IMG-20260114-WA0004.jpg">
     <h2>لوشن Carbamide 10% Urea</h2>
-    <p>💧 ترطيب 24 ساعة<br>👌 نعومة من أول استخدام</p>
-    <div class="price">130 جنيه</div>
-    <button onclick="addToCart(this)">أضف للسلة</button>
+    <p class="price">130 جنيه</p>
+    <button>أضف للسلة</button>
   </div>
 
-  <div class="product-card" data-name="كف سيلكون لليد" data-price="80">
+  <div class="product-card">
     <img src="https://i.postimg.cc/8kvmr3zp/Whats-App-Image-2026-01-14-at-11-25-53-PM.jpg">
     <h2>كف سيلكون لليد</h2>
-    <p>يرطب ويحمي البشرة ✨</p>
-    <div class="price">80 جنيه</div>
-    <button onclick="addToCart(this)">أضف للسلة</button>
+    <p class="price">80 جنيه</p>
+    <button>أضف للسلة</button>
   </div>
 
 </div>
 
-<div class="cart-icon" onclick="toggleCart()">
-  🛒
-  <span class="cart-count" id="cart-count">0</span>
-</div>
-
-<div class="cart-items" id="cart-items"></div>
-
-<form id="customerForm">
-  <input type="text" id="customerName" placeholder="الاسم الكامل" required>
-  <input type="text" id="customerPhone" placeholder="رقم الهاتف" required>
-  <input type="text" id="customerAddress" placeholder="العنوان" required>
-  <button type="submit">اطلب الآن</button>
-</form>
+<div class="cart-icon">🛒</div>
 
 <footer>
-  📞 01145858299<br>
+  📞 01145858299 <br>
   © 2026 متجر ab0,salem
 </footer>
 
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-function saveCart(){
-  localStorage.setItem("cart", JSON.stringify(cart));
-}
-
-function addToCart(btn){
-  const card = btn.parentElement;
-  const name = card.dataset.name;
-  const price = Number(card.dataset.price);
-  const item = cart.find(i => i.name === name);
-
-  if(item) item.qty++;
-  else cart.push({name, price, qty:1});
-
-  saveCart();
-  updateCart();
-}
-
-function toggleCart(){
-  const c = document.getElementById("cart-items");
-  c.style.display = c.style.display === "block" ? "none" : "block";
-}
-
-function updateCart(){
-  const box = document.getElementById("cart-items");
-  const count = document.getElementById("cart-count");
-  box.innerHTML = "";
-  let total = 0;
-
-  cart.forEach((i, idx)=>{
-    total += i.price * i.qty;
-    box.innerHTML += `
-      <div class="cart-item">
-        <span>${i.name}</span>
-        <input type="number" value="${i.qty}" min="1" onchange="changeQty(${idx}, this.value)">
-        <button onclick="removeItem(${idx})">حذف</button>
-      </div>`;
-  });
-
-  box.innerHTML += `<div class="cart-total">المجموع: ${total} جنيه</div>`;
-  count.textContent = cart.reduce((s,i)=>s+i.qty,0);
-}
-
-function changeQty(i,v){
-  cart[i].qty = Number(v);
-  saveCart();
-  updateCart();
-}
-
-function removeItem(i){
-  cart.splice(i,1);
-  saveCart();
-  updateCart();
-}
-
-updateCart();
-
-document.getElementById("customerForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  if(cart.length === 0){
-    alert("السلة فارغة");
-    return;
-  }
-  const products = cart.map(i => `${i.name} x${i.qty}`).join(", ");
-  const url = "https://docs.google.com/forms/d/e/1FAIpQLScN2OeFj2uHYDVUFsIqW2kimQQA2kOnoyyKZOcmOltTSR1QmQ/viewform";
-  const params = `?usp=pp_url&entry.1815828851=${encodeURIComponent(products)}`;
-  window.open(url + params, "_blank");
-});
-</script>
-
 </body>
-     </html>
+</html>
